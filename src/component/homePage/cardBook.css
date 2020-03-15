@@ -1,0 +1,36 @@
+/* CARD CONTAINER CSS */
+
+.cardContainer {
+    display: flex;
+    flex-direction: row;
+    justify-items: normal;
+    border-radius: 20px;
+    width: 275px;
+    height: 350px;
+  }
+  
+  .cardImg {
+    width: 275px;
+    height: 350px;
+    border-radius: 20px;
+  }
+  
+  .cardWrapper {
+    margin: 50px;
+  }
+  
+  /* .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    -webkit-box-shadow: 7px 3px 72px 0px rgba(0, 0, 0, 0.28);
+    -moz-box-shadow: 7px 3px 72px 0px rgba(0, 0, 0, 0.28);
+    box-shadow: 7px 3px 72px 0px rgba(0, 0, 0, 0.28);
+    margin: 20px;
+    border-radius: 10px; */
+    
+  /* } */
+  
+  /* CARD CONTAINER CSS */
+  
