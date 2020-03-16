@@ -6,7 +6,7 @@ import Axios from 'axios'
 
 
 
-const URL_STRING = "/api/v1/"
+const URL_STRING = "/api/v1/sortbook/ok"
 
 
 class CardBook extends Component {

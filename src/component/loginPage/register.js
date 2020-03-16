@@ -77,7 +77,7 @@ class Register extends Component {
                     </div>
                     <div class="regis-sign">
                         {/* <Link to={"/"}> */}
-                        <a class="box-login" onClick={this.registerId}>
+                        <a class="box-login">
                             <button type="submit" onClick={this.registerId}>Sign Up</button>
                         </a>
                         {/* </Link> */}
