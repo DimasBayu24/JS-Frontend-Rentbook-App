@@ -5,8 +5,15 @@ import BookContent from "./BookContent";
 import BorrowButton from "./BorrowButton";
 import EditModal from "./EditModal";
 import DeleteModal from "./DeleteModal";
-import Axios from "axios";
-const URL_STRING = "/api/v1/";
+import { getBookById } from '../../redux/actions/books'
+import { connect } from 'react-redux'
+
+const mapStateToProps = (book) => {
+  return {
+    book
+  }
+}
+
 class BookDetails extends React.Component {
   constructor(props) {
     super(props);
@@ -16,16 +23,12 @@ class BookDetails extends React.Component {
     };
   }
 
-  getBookById = () => {
-    Axios.get(URL_STRING + `${this.state.id}`)
-      .then(({ data }) => {
-        this.setState({
-          book: data.result
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  getBookById = async () => {
+    await this.props.dispatch(getBookById(this.state.id))
+    console.log(this.props.book)
+    this.setState({
+      book: this.props.book.book.bookData
+    })
   };
 
   componentDidMount = () => {
@@ -40,14 +43,14 @@ class BookDetails extends React.Component {
         {book &&
           book.map((item, index) => (
             <div key={index}>
-              <BookDetailNavbar  data={item}/>
+              <BookDetailNavbar data={item} />
               <div className="grid-templates-content">
                 <BookContent
-                data={item}
+                  data={item}
                 />
-                <BorrowButton  data={item}/>
+                <BorrowButton data={item} />
               </div>
-              <EditModal data={item}/>
+              <EditModal data={item} />
               <DeleteModal data={item} />
             </div>
           ))}
@@ -57,4 +60,4 @@ class BookDetails extends React.Component {
   }
 }
 
-export default BookDetails;
+export default connect(mapStateToProps)(BookDetails);

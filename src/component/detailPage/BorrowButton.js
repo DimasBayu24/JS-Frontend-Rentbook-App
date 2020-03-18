@@ -1,5 +1,13 @@
 import React from "react";
-import Axios from "axios";
+import { connect } from 'react-redux'
+import { rentBookRedux, returnBook } from '../../redux/actions/books'
+
+const mapStateToProps = (book) => {
+  return {
+    book
+  }
+}
+
 class BorrowButton extends React.Component {
   constructor(props) {
     super(props);
@@ -18,13 +26,7 @@ class BorrowButton extends React.Component {
       availability: "false"
     };
 
-    Axios.patch(`/api/v1/rent/${this.state.id}`, rentBook)
-      .then(result => {
-        console.log(result);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.props.dispatch(rentBookRedux(this.state.id, rentBook))
   };
 
   returnBookData = () => {
@@ -33,13 +35,7 @@ class BorrowButton extends React.Component {
       availability: "true"
     };
 
-    Axios.patch(`/api/v1/return/${this.state.id}`, rentBook)
-      .then(result => {
-        console.log(result);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.props.dispatch(returnBook(this.state.id, rentBook))
   };
 
   render() {
@@ -74,4 +70,4 @@ class BorrowButton extends React.Component {
   }
 }
 
-export default BorrowButton;
+export default connect(mapStateToProps)(BorrowButton);

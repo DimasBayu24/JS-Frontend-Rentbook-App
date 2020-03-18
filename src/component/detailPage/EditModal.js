@@ -1,6 +1,13 @@
 import React from "react";
-import Axios from "axios";
 import "./EditModal.css";
+import { connect } from 'react-redux'
+import { updateBook } from '../../redux/actions/books'
+
+const mapStateToProps = (book) => {
+  return {
+    book
+  }
+}
 
 class editModal extends React.Component {
   constructor(props) {
@@ -36,13 +43,7 @@ class editModal extends React.Component {
     };
     console.log(updatedBook);
 
-    Axios.patch(`/api/v1/${this.state.id}`, updatedBook)
-      .then(result => {
-        console.log(result);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.props.dispatch(updateBook(this.state.id, updatedBook))
   };
 
 
@@ -162,4 +163,4 @@ class editModal extends React.Component {
   }
 }
 
-export default editModal;
+export default connect(mapStateToProps)(editModal);

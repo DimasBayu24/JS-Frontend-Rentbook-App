@@ -42,7 +42,7 @@ const Sidebar = (props) => {
         e.preventDefault()
         try {
             localStorage.removeItem('token');
-            props.history.push('/login')
+            this.props.history.push('/login')
         } catch (e) {
             console.log("Something's wrong")
         }

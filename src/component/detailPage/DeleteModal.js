@@ -1,8 +1,9 @@
 import React from "react";
-
 import "./DeleteModal.css";
 import checkedLogo from "../../storage/img/checked.png";
 import Axios from "axios";
+import { Link } from "react-router-dom";
+
 const URL_STRING = "/api/v1/";
 const DeleteModal = props => {
   const deleteBookData = () => {
@@ -19,9 +20,9 @@ const DeleteModal = props => {
     <div id="deleteModal" className="delete-modal">
       <div className="delete-modal-content">
         <div className="delete-modal-header">
-          <span onClick={deleteBookData} className="close">
+          <Link to='/mainpage'> <span onClick={deleteBookData} className="close">
             &times;
-          </span>
+          </span></Link>
         </div>
         <div className="delete-modal-body">
           <div className="body-wrapper">

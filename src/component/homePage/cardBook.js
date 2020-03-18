@@ -1,28 +1,25 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import Truncate from 'react-truncate';
+import { connect } from 'react-redux'
+import { getAllBook } from '../../redux/actions/books'
 
-import Axios from 'axios'
-
-
-
-const URL_STRING = "/api/v1/sortbook/ok"
-
+const mapStateToProps = (book) => {
+  return {
+    book
+  }
+}
 
 class CardBook extends Component {
   state = {
     library: []
   }
 
-  getData = () => {
-    Axios.get(URL_STRING)
-      .then(({ data }) => {
-        this.setState({
-          library: data.result
-        })
-        console.log(data)
-      })
-      .catch(err => console.log(err))
+  getData = async () => {
+    await this.props.dispatch(getAllBook())
+    this.setState({
+      library: this.props.book.book.bookData
+    })
   }
 
   componentDidMount = () => {
@@ -40,9 +37,9 @@ class CardBook extends Component {
               data kosong
             </div>
           ) :
-          library.map(item => (
+          library.map((item, index) => (
             <Link to={{ pathname: `/books/${item.id}`, book: item }}>
-              <div className="cardWrapper" key={item.id}>
+              <div className="cardWrapper" key={index}>
                 <img className="cardImg" src={item.img} alt="" />
                 <h1>{item.title}</h1>
                 <p>
@@ -68,4 +65,4 @@ class CardBook extends Component {
   }
 }
 
-export default CardBook;
+export default connect(mapStateToProps)(CardBook);

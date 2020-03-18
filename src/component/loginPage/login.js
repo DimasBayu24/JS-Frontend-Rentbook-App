@@ -66,7 +66,7 @@ class Login extends Component {
                         </div>
                         <div class="box-password">
                             <p class="password">Password</p>
-                            <input type="text"
+                            <input style={{ fontSize: "32px" }} type="password"
                                 onChange={(e) => {
                                     this.setState({
                                         password: e.target.value
