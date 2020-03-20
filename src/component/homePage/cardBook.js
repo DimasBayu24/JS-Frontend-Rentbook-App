@@ -21,7 +21,12 @@ class CardBook extends Component {
       library: this.props.book.book.bookData
     })
   }
+  componentDidUpdate = () => {
+    console.log('kontol ', this.props.book)
 
+    this.state.library = this.props.book.book.bookData
+
+  }
   componentDidMount = () => {
     this.getData();
   }
@@ -31,13 +36,13 @@ class CardBook extends Component {
     console.log("data from library state ", library)
     return (
       <div className="cardContainer">
-        {library.length < 1 ?
+        {this.props.book.book.bookData.length < 1 ?
           (
             <div>
               data kosong
             </div>
           ) :
-          library.map((item, index) => (
+          this.props.book.book.bookData.map((item, index) => (
             <Link to={{ pathname: `/books/${item.id}`, book: item }}>
               <div className="cardWrapper" key={index}>
                 <img className="cardImg" src={item.img} alt="" />

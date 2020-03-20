@@ -1,11 +1,11 @@
 import React from "react";
 import "./EditModal.css";
 import { connect } from 'react-redux'
-import { updateBook } from '../../redux/actions/books'
+import { updateBook } from '../../redux/actions/detail'
 
-const mapStateToProps = (book) => {
+const mapStateToProps = (detail) => {
   return {
-    book
+    detail
   }
 }
 

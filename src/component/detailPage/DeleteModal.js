@@ -1,21 +1,22 @@
 import React from "react";
 import "./DeleteModal.css";
 import checkedLogo from "../../storage/img/checked.png";
-import Axios from "axios";
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux'
+import { deleteBook } from '../../redux/actions/detail'
 
-const URL_STRING = "/api/v1/";
+const mapStateToProps = (detail) => {
+  return {
+    detail
+  }
+}
 const DeleteModal = props => {
+  console.log(props.data.id);
+
   const deleteBookData = () => {
-    Axios.delete(URL_STRING + props.data.id)
-      .then(result => {
-        console.log(result);
-        console.log("Data has been deleted!");
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    props.dispatch(deleteBook(props.data.id))
   };
+
   return (
     <div id="deleteModal" className="delete-modal">
       <div className="delete-modal-content">
@@ -37,4 +38,4 @@ const DeleteModal = props => {
   );
 };
 
-export default DeleteModal;
+export default connect(mapStateToProps)(DeleteModal);

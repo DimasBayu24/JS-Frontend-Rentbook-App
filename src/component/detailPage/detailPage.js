@@ -5,12 +5,12 @@ import BookContent from "./BookContent";
 import BorrowButton from "./BorrowButton";
 import EditModal from "./EditModal";
 import DeleteModal from "./DeleteModal";
-import { getBookById } from '../../redux/actions/books'
+import { getBookById } from '../../redux/actions/detail'
 import { connect } from 'react-redux'
 
-const mapStateToProps = (book) => {
+const mapStateToProps = (detail) => {
   return {
-    book
+    detail
   }
 }
 
@@ -25,9 +25,9 @@ class BookDetails extends React.Component {
 
   getBookById = async () => {
     await this.props.dispatch(getBookById(this.state.id))
-    console.log(this.props.book)
+    console.log(this.props.data)
     this.setState({
-      book: this.props.book.book.bookData
+      book: this.props.detail.detail.detailData
     })
   };
 

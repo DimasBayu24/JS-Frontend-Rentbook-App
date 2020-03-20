@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from 'react-redux'
-import { rentBookRedux, returnBook } from '../../redux/actions/books'
+import { rentBookRedux, returnBook } from '../../redux/actions/detail'
 
-const mapStateToProps = (book) => {
+const mapStateToProps = (detail) => {
   return {
-    book
+    detail
   }
 }
 

@@ -2,8 +2,6 @@ import React from "react";
 import Navbar from "./NavBar"
 import CardBook from "./cardBook"
 import CarouselComponent from "./carousel"
-// import HomeHeader from "../../Components/Header/HomeHeader";
-// import HomeCardList from "../../Components/Card/HomeCardList";
 import Sidebar from "./sidebar"
 import AddModal from "./addModal"
 import "./mainPage.css"
