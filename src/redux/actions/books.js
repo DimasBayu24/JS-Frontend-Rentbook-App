@@ -2,10 +2,10 @@ import Axios from 'axios'
 
 const URL_STRING = "/api/v1/"
 
-export const getAllBook = () => {
+export const getAllBook = (pageNumber) => {
     return {
         type: "GET_BOOK",
-        payload: Axios.get(URL_STRING)
+        payload: Axios.get(URL_STRING + `?page=${pageNumber}`)
     }
 }
 
@@ -19,7 +19,7 @@ export const getAvail = () => {
 export const getSearch = (data) => {
     return {
         type: "GET_SEARCH",
-        payload: Axios.get(`${URL_STRING}search/`, data)
+        payload: Axios.get(`${URL_STRING}search/${data}`)
     }
 }
 

@@ -32,6 +32,14 @@ class BookDetails extends React.Component {
   };
 
   componentDidMount = () => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.props.history.push(`/books/${this.state.id}`)
+    } else {
+      this.props.history.push('/login')
+    }
+
+
     this.getBookById();
   };
 

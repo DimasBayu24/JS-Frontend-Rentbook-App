@@ -10,11 +10,11 @@ const CarouselComponent = () => {
                 arrows
                 slidesPerPage={2}>
                 {/* eslint-disable-next-line  */}
-                <img width='800px' height='600px' src='https://vetstreet.brightspotcdn.com/dims4/default/3701901/2147483647/crop/0x0%2B0%2B0/resize/645x380/quality/90/?url=https%3A%2F%2Fvetstreet-brightspot.s3.amazonaws.com%2F38%2Facd450a7fd11e0a0d50050568d634f%2Ffile%2FSaluki-3-645mk-62811.jpg' />
+                <img width='600px' height='400px' src='https://vetstreet.brightspotcdn.com/dims4/default/3701901/2147483647/crop/0x0%2B0%2B0/resize/645x380/quality/90/?url=https%3A%2F%2Fvetstreet-brightspot.s3.amazonaws.com%2F38%2Facd450a7fd11e0a0d50050568d634f%2Ffile%2FSaluki-3-645mk-62811.jpg' />
                 {/* eslint-disable-next-line  */}
-                <img width='800px' height='600px' src='https://upload.wikimedia.org/wikipedia/commons/d/d1/Saluki_in_India.jpg' />
+                <img width='600px' height='400px' src='https://foodevolution.com.ph/wp-content/uploads/2019/02/Maya-the-Polar-Bear.jpg' />
                 {/* eslint-disable-next-line  */}
-                <img width='800px' height='600px' src='https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/14185322/AKC-121716-139.jpg' />
+                <img width='600px' height='400px' src='https://hellobark.com/wp-content/uploads/venus-chihuahua-1.jpg' />
                 {/* <div className="card-carousel-wrapper js-flickity"
                 data-flickity-options='{ "freeScroll": true, "wrapAround": true }'>
                 <div className="carousel-card">

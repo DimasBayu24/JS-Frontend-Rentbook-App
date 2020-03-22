@@ -1,8 +1,14 @@
+import { register } from '../../redux/actions/users'
+import { connect } from 'react-redux'
 import React, { Component } from 'react'
-import Axios from 'axios'
 import './register.css'
-import { Link } from "react-router-dom";
-const URL_STRING = "/api/v1/user/register/"
+
+
+const mapStateToProps = (user) => {
+    return {
+        user
+    }
+}
 
 class Register extends Component {
     state = {
@@ -17,21 +23,10 @@ class Register extends Component {
             username,
             password
         }
-        Axios.post(URL_STRING, user)
-
-            .then(res => {
-                if (res.status === 200) {
-                    alert("Sukses Register")
-                    try {
-                        this.props.history.push('/login')
-                    } catch (err) {
-                        console.log("Something's wrong")
-                    }
-                }
-            }).catch(err => {
-                alert("Your email/ password is wrong")
-            })
+        this.props.dispatch(register(user))
+        this.props.history.push('/login')
     }
+
 
     render() {
 
@@ -67,7 +62,7 @@ class Register extends Component {
                         </div>
                         <div class="box-password">
                             <p class="password">Password</p>
-                            <input type="text"
+                            <input style={{ fontSize: "32px" }} type="password"
                                 onChange={(e) => {
                                     this.setState({
                                         password: e.target.value
@@ -97,4 +92,4 @@ class Register extends Component {
 
     }
 }
-export default Register
+export default connect(mapStateToProps)(Register)

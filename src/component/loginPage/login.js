@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import './login.css'
-import Axios from 'axios'
 import { Link } from "react-router-dom";
+import { login } from '../../redux/actions/users'
+import { connect } from 'react-redux'
 
-// import { checkPropTypes } from 'prop-types'
-const URL_STRING = "/api/v1/user/login/"
+const mapStateToProps = (user) => {
+    return {
+        user
+    }
+}
 
 class Login extends Component {
     state = {
@@ -19,29 +23,10 @@ class Login extends Component {
             username,
             password
         }
-        Axios.post(URL_STRING, user)
-            .then(res => {
-                if (res.status === 200) {
-                    alert("Sukses Login")
-                    try {
-                        localStorage.setItem('token', JSON.stringify(res.data.result.token))
-                        this.props.history.push('/mainpage')
-                    } catch (err) {
-                        console.log("Something's wrong")
-                    }
-                }
-            }).catch(err => {
-                alert("Your email/ password is wrong")
-            })
+        this.props.dispatch(login(user, this.props.history))
+
     }
 
-
-
-
-
-    // submitLogin = () => {
-    //     props.history.push('')
-    // }
     render() {
         return (
             <div className="container">
@@ -99,4 +84,4 @@ class Login extends Component {
     }
 }
 
-export default Login
+export default connect(mapStateToProps)(Login)

@@ -1,10 +1,20 @@
-import React from 'react'
-import { getSortGenre, getSortDate, getAvail } from '../../redux/actions/books'
+import React, { useState } from 'react'
+import { getSortGenre, getSortDate, getAvail, getSearch } from '../../redux/actions/books'
 import { useDispatch } from 'react-redux'
 
 
 const Navbar = () => {
+
   const dispatch = useDispatch()
+
+  const [searchState, setSearch] = useState({
+    search: ""
+  })
+
+
+  const getSearchBook = () => {
+    dispatch(getSearch(searchState.search))
+  }
 
   const getGenre = () => {
     dispatch(getSortGenre())
@@ -58,9 +68,15 @@ const Navbar = () => {
             <input
               style={{ fontFamily: "Arial, FontAwesome" }}
               type="text"
+              onChange={(e) => {
+                setSearch({
+                  search: e.target.value
+                })
+              }}
               placeholder="&#xf002; Search book"
             />
           </li>
+          <button type="submit" onClick={getSearchBook}>Search</button>
           <li className="nav-item-category">
             <ul class="collapse list-unstyled" id="pageSubmenu">
               <li>

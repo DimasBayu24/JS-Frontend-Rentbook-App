@@ -62,7 +62,8 @@ class BorrowButton extends React.Component {
             </div>
             <form>
               <div className="borrow-btn">{buttonStatus}
-              </div></form>
+              </div>
+            </form>
           </aside>
         </section>
       </div>

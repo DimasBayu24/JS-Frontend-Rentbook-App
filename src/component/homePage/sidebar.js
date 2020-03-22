@@ -1,6 +1,5 @@
 import React from "react";
-// import { Link } from "react-router-dom";
-
+import { Link } from 'react-router-dom'
 
 const Sidebar = (props) => {
     function closeNav() {
@@ -38,12 +37,17 @@ const Sidebar = (props) => {
             }
         }
     };
-    const handleLogout = (e) => {
-        e.preventDefault()
+    const handleLogout = () => {
+
         try {
-            localStorage.removeItem('token');
-            this.props.history.push('/login')
-        } catch (e) {
+            const token = localStorage.getItem('token');
+            if (token) {
+                localStorage.removeItem('token');
+                this.props.history.push('/login')
+            } else {
+
+            }
+        } catch  {
             console.log("Something's wrong")
         }
     }
@@ -62,10 +66,12 @@ const Sidebar = (props) => {
                     <ul>
                         <li><a href="#">Explore</a></li>
                         <li><a href="#">History</a></li>
-                        <li><a onClick={addModal} id="add" href="#">Add Book</a></li>
-
-                        <li><a onClick={(e) => { handleLogout(e) }}>Logout</a></li>
-
+                        <li><a onClick={addModal} id="add" >Add Book</a></li>
+                        <form>
+                            <Link to='/login'>
+                                <li><a onClick={(e) => { handleLogout(e) }}>Logout</a></li>
+                            </Link>
+                        </form>
                     </ul>
                 </nav>
             </aside>
